@@ -1,17 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import data from "../data";
+import { regions } from "../data/data"; // بيانات أولية
 
 const regionSlice = createSlice({
-  name: "regions",
-  initialState: data.regions,
+  name: "region",
+  initialState: [...regions], // لائحة المناطق
   reducers: {
     ajouterRegion: (state, action) => {
       state.push(action.payload);
     },
     modifierRegion: (state, action) => {
-      const { id, nom } = action.payload;
-      const region = state.find((r) => r.id === id);
-      if (region) region.nom = nom;
+      const index = state.findIndex((r) => r.id === action.payload.id);
+      if (index !== -1) {
+        state[index] = action.payload;
+      }
     },
     supprimerRegion: (state, action) => {
       return state.filter((r) => r.id !== action.payload);
@@ -19,6 +20,5 @@ const regionSlice = createSlice({
   },
 });
 
-export const { ajouterRegion, modifierRegion, supprimerRegion } =
-  regionSlice.actions;
+export const { ajouterRegion, modifierRegion, supprimerRegion } = regionSlice.actions;
 export default regionSlice.reducer;

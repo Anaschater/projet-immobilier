@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+مزيان زكرياء 👌، غادي نشرح ليك **الكونسيبت (الفكرة)** ديال المشروع ديالك بطريقة مبسطة ومهنية، بحال إلا غادي تقدمها فـ présentation أو rapport.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## 💡 فكرة المشروع (Concept du projet)
 
-In the project directory, you can run:
+### 🏢 اسم المشروع:  
+**Système de gestion immobilière pour une agence de syndic**
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🎯 الهدف من المشروع
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+الهدف من هاد المشروع هو تطوير **تطبيق ويب** كيساعد وكالة متخصصة فـ تسيير العقارات (biens immobiliers) باش تدير:
 
-### `npm test`
+- إدارة المدن، الأحياء، العقارات، والعقود
+- تسجيل الدخول من طرف syndic
+- عرض معلومات العقارات اللي مسؤول عليهم syndic
+- تتبع العقود والمداخيل الشهرية والسنوية
+- حماية الوصول للبيانات عبر authentification
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🧱 مكونات النظام
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 👤 1. Authentification Syndic
+- كل syndic عندو code و mot de passe
+- يقدر يدخل فقط إذا كانت المعلومات صحيحة
+- بعد الدخول، يشوف غير المعلومات اللي كيتعلقو به
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🏙️ 2. Gestion des Villes
+- إضافة مدينة جديدة
+- تعديل أو حذف مدينة
+- تصفية المدن حسب code أو région
+- عرض العقود المرتبطة بمدينة معينة
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🏠 3. Gestion des Biens Immobiliers
+- كل bien عندو type (appartement, villa…)
+- مرتبط بحي، والحي مرتبط بمدينة، والمدينة بمنطقة
+- كل bien كيتسجل مع معلوماتو (adresse, superficie, etc.)
 
-### `npm run eject`
+### 📄 4. Gestion des Contrats
+- كل عقد مربوط بـ bien و syndic
+- فيه prix_mensuel، date, état (en cours, résilié)
+- يتم احتساب chiffre d’affaire تلقائياً (prix_mensuel × 12)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 📊 5. Statistiques & Web Service
+- عرض عدد العقارات والعقود
+- Web service كيرجع عدد biens و العقود résiliés منذ 2013
+- صفحة لاختبار هاد الخدمة
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧠 القيمة المضافة
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- تسهيل إدارة العقارات والعقود
+- واجهة بسيطة وآمنة للمستخدم
+- تقارير مالية تلقائية حسب الأحياء والمدن والمناطق
+- إمكانية التوسع مستقبلاً (PDF, export, notifications…)
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🛠️ التكنولوجيات المستعملة
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Côté | Technologie |
+|------|-------------|
+| Frontend | React.js |
+| Backend (mocké) | Redux Toolkit |
+| Authentification | React Router + Redux |
+| Données | JSON / Redux Store |
+| Web Service (simulé) | Fonction JS |
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+إذا بغيتي، نقدر نكتب ليك **مقدمة رسمية** بحال لي كتكون فـ rapport de stage أو mémoire، أو نزيدك **diagramme de classes** أو **cas d’utilisation UML**.  
+شنو تحب نكمل عليه؟

@@ -1,18 +1,19 @@
-
 import { configureStore } from "@reduxjs/toolkit";
-import regionReducer from "./regionSlice";
+import syndicReducer from "./syndicSlice";
 import villeReducer from "./villeSlice";
+import regionReducer from "./regionSlice";
 import quartierReducer from "./quartierSlice";
 import bienReducer from "./bienSlice";
 import contratReducer from "./contratSlice";
 
 const store = configureStore({
   reducer: {
-    regions: regionReducer,
-    villes: villeReducer,
-    quartiers: quartierReducer,
-    biens: bienReducer,
-    contrats: contratReducer,
+    syndic: syndicReducer,
+    ville: villeReducer,
+    region: regionReducer,
+    quartier: quartierReducer,
+    bien: bienReducer,
+    contrat: contratReducer,
   },
 });
 

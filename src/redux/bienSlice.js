@@ -1,24 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
-import data from "../data";
+import { biens } from "../data/data";
 
 const bienSlice = createSlice({
-  name: "biens",
-  initialState: data.biens,
+  name: "bien",
+  initialState: [...biens],
   reducers: {
     ajouterBien: (state, action) => {
       state.push(action.payload);
     },
     modifierBien: (state, action) => {
-      const { id, type, quartierId, prix } = action.payload;
-      const bien = state.find((b) => b.id === id);
-      if (bien) {
-        bien.type = type;
-        bien.quartierId = quartierId;
-        bien.prix = prix;
+      const index = state.findIndex((b) => b.code === action.payload.code);
+      if (index !== -1) {
+        state[index] = action.payload;
       }
     },
     supprimerBien: (state, action) => {
-      return state.filter((b) => b.id !== action.payload);
+      return state.filter((b) => b.code !== action.payload);
     },
   },
 });

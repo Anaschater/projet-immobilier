@@ -1,29 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
-import data from "../data";
+import { contrats } from "../data/data";
 
 const contratSlice = createSlice({
-  name: "contrats",
-  initialState: data.contrats,
+  name: "contrat",
+  initialState: [...contrats],
   reducers: {
     ajouterContrat: (state, action) => {
       state.push(action.payload);
     },
     modifierContrat: (state, action) => {
-      const { id, bienId, client, date, montant } = action.payload;
-      const contrat = state.find((c) => c.id === id);
-      if (contrat) {
-        contrat.bienId = bienId;
-        contrat.client = client;
-        contrat.date = date;
-        contrat.montant = montant;
+      const index = state.findIndex((c) => c.num === action.payload.num);
+      if (index !== -1) {
+        state[index] = action.payload;
       }
     },
     supprimerContrat: (state, action) => {
-      return state.filter((c) => c.id !== action.payload);
+      return state.filter((c) => c.num !== action.payload);
     },
   },
 });
 
-export const { ajouterContrat, modifierContrat, supprimerContrat } =
-  contratSlice.actions;
+export const { ajouterContrat, modifierContrat, supprimerContrat } = contratSlice.actions;
 export default contratSlice.reducer;
