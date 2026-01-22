@@ -4,6 +4,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // الصفحات
 import LoginPage from "./components/LoginPage";
 import AccueilSyndic from "./components/AccueilSyndic";
+import Navbar from "./components/Navbar";
+import Ville from "./components/ville/Ville";
+import Quartier from "./components/quartier/Quartier";
+import Bien from "./components/bien/Bien";
+import Contrat from "./components/contrat/Contrat";
 import AjouterVille from "./components/ville/AjouterVille";
 import MiseAJourVille from "./components/ville/MiseAJourVille";
 import AjouterQuartier from "./components/quartier/AjouterQuartier";
@@ -30,17 +35,34 @@ function App() {
                path="/"
                element={
                   <ProtectedRoute>
-                     <AccueilSyndic />
+                     <>
+                        <Navbar />
+                        <AccueilSyndic />
+                     </>
                   </ProtectedRoute>
                }
             />
 
             {/* إدارة المدن */}
             <Route
+               path="/ville"
+               element={
+                  <ProtectedRoute>
+                     <>
+                        <Navbar />
+                        <Ville />
+                     </>
+                  </ProtectedRoute>
+               }
+            />
+            <Route
                path="/ajouter-ville"
                element={
                   <ProtectedRoute>
-                     <AjouterVille />
+                     <>
+                        <Navbar />
+                        <AjouterVille />
+                     </>
                   </ProtectedRoute>
                }
             />
@@ -48,17 +70,34 @@ function App() {
                path="/mise-a-jour-ville"
                element={
                   <ProtectedRoute>
-                     <MiseAJourVille />
+                     <>
+                        <Navbar />
+                        <MiseAJourVille />
+                     </>
                   </ProtectedRoute>
                }
             />
 
             {/* إدارة الأحياء */}
             <Route
+               path="/quartier"
+               element={
+                  <ProtectedRoute>
+                     <>
+                        <Navbar />
+                        <Quartier />
+                     </>
+                  </ProtectedRoute>
+               }
+            />
+            <Route
                path="/ajouter-quartier"
                element={
                   <ProtectedRoute>
-                     <AjouterQuartier />
+                     <>
+                        <Navbar />
+                        <AjouterQuartier />
+                     </>
                   </ProtectedRoute>
                }
             />
@@ -66,17 +105,34 @@ function App() {
                path="/mise-a-jour-quartier"
                element={
                   <ProtectedRoute>
-                     <MiseAJourQuartier />
+                     <>
+                        <Navbar />
+                        <MiseAJourQuartier />
+                     </>
                   </ProtectedRoute>
                }
             />
 
             {/* إدارة العقارات */}
             <Route
+               path="/bien"
+               element={
+                  <ProtectedRoute>
+                     <>
+                        <Navbar />
+                        <Bien />
+                     </>
+                  </ProtectedRoute>
+               }
+            />
+            <Route
                path="/ajouter-bien"
                element={
                   <ProtectedRoute>
-                     <AjouterBien />
+                     <>
+                        <Navbar />
+                        <AjouterBien />
+                     </>
                   </ProtectedRoute>
                }
             />
@@ -84,17 +140,34 @@ function App() {
                path="/mise-a-jour-bien"
                element={
                   <ProtectedRoute>
-                     <MiseAJourBien />
+                     <>
+                        <Navbar />
+                        <MiseAJourBien />
+                     </>
                   </ProtectedRoute>
                }
             />
 
             {/* إدارة العقود */}
             <Route
+               path="/contrat"
+               element={
+                  <ProtectedRoute>
+                     <>
+                        <Navbar />
+                        <Contrat />
+                     </>
+                  </ProtectedRoute>
+               }
+            />
+            <Route
                path="/ajouter-contrat"
                element={
                   <ProtectedRoute>
-                     <AjouterContrat />
+                     <>
+                        <Navbar />
+                        <AjouterContrat />
+                     </>
                   </ProtectedRoute>
                }
             />
@@ -102,7 +175,10 @@ function App() {
                path="/mise-a-jour-contrat"
                element={
                   <ProtectedRoute>
-                     <MiseAJourContrat />
+                     <>
+                        <Navbar />
+                        <MiseAJourContrat />
+                     </>
                   </ProtectedRoute>
                }
             />
@@ -112,7 +188,10 @@ function App() {
                path="/test-web-service"
                element={
                   <ProtectedRoute>
-                     <TestWebService />
+                     <>
+                        <Navbar />
+                        <TestWebService />
+                     </>
                   </ProtectedRoute>
                }
             />
@@ -120,7 +199,10 @@ function App() {
                path="/statistiques"
                element={
                   <ProtectedRoute>
-                     <Statistiques />
+                     <>
+                        <Navbar />
+                        <Statistiques />
+                     </>
                   </ProtectedRoute>
                }
             />
