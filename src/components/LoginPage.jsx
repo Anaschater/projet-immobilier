@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginSyndic } from "../redux/syndicSlice";
 import { syndics } from "../data/data";
+import "../styles/Form.css";
 
 function LoginPage() {
   const [code, setCode] = useState("");
@@ -13,7 +14,7 @@ function LoginPage() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // التحقق من وجود syndic فـ البيانات
+    
     const found = syndics.find(
       (s) => s.code === code && s.mot_de_passe === password
     );
@@ -27,31 +28,48 @@ function LoginPage() {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "100px auto", textAlign: "center" }}>
-      <h2>Authentification Syndic</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <input
-            type="text"
-            placeholder="Code Syndic"
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            required
-          />
+    <div className="form-container">
+      <div className="form-wrapper">
+        <div className="form-card">
+          <div className="form-header">
+            <h2>Authentification Syndic</h2>
+            <p>Connectez-vous à votre compte</p>
+          </div>
+          <div className="form-body">
+            <form onSubmit={handleLogin}>
+              <div className="form-group">
+                <label className="form-label">Code Syndic</label>
+                <input
+                  type="text"
+                  className="form-input"
+                  placeholder="Ex: SYNDIC001"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Mot de passe</label>
+                <input
+                  type="password"
+                  className="form-input"
+                  placeholder="Entrez votre mot de passe"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-actions">
+                <button type="submit" className="form-btn btn-submit">
+                   Se connecter
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div style={{ marginTop: "10px" }}>
-          <input
-            type="password"
-            placeholder="Mot de passe"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" style={{ marginTop: "20px" }}>
-          Se connecter
-        </button>
-      </form>
+      </div>
     </div>
   );
 }

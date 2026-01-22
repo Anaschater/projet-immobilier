@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { regions } from "../data/data"; // بيانات أولية
+import { regions } from "../data/data"; 
 
 const regionSlice = createSlice({
   name: "region",
-  initialState: [...regions], // لائحة المناطق
+  initialState: [...regions],   
   reducers: {
     ajouterRegion: (state, action) => {
       state.push(action.payload);

@@ -1,6 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import "../styles/AccueilSyndic.css";
+import villesImg from "../assets/images/ville.jpg";
+import quartiersImg from "../assets/images/quartier.png";
+import biensImg from "../assets/images/biens.jpg";
+import contratsImg from "../assets/images/contrats.jpg";
 
 function AccueilSyndic() {
   const syndic = useSelector((state) => state.syndic.syndic);
@@ -8,40 +13,76 @@ function AccueilSyndic() {
 
   const handleLogout = () => {
     navigate("/");
-    window.location.reload(); // إعادة تحميل باش يمسح session
+   
   };
 
+  const actions = [
+    {
+      id: 1,
+      title: "Villes",
+      image: villesImg,
+      add: "/ajouter-ville",
+      manage: "/mise-a-jour-ville",
+      description: "Gérer vos villes",
+    },
+    {
+      id: 2,
+      title: "Quartiers",
+      image: quartiersImg,
+      add: "/ajouter-quartier",
+      manage: "/mise-a-jour-quartier",
+      description: "Organiser vos quartiers",
+    },
+    {
+      id: 3,
+      title: "Biens",
+      image: biensImg,
+      add: "/ajouter-bien",
+      manage: "/mise-a-jour-bien",
+      description: "Ajouter & gérer les biens",
+    },
+    {
+      id: 4,
+      title: "Contrats",
+      image: contratsImg,
+      add: "/ajouter-contrat",
+      manage: "/mise-a-jour-contrat",
+      description: "Gérer les contrats",
+    },
+  ];
+
   return (
-    <div style={{ padding: "40px", textAlign: "center" }}>
-      <h2>👋 Bienvenue, {syndic.nom}</h2>
-      <p>Choisissez une action :</p>
-
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "20px", marginTop: "30px" }}>
-        {/* Villes */}
-        <Link to="/ajouter-ville"><button>➕ Ajouter Ville</button></Link>
-        <Link to="/mise-a-jour-ville"><button>🛠️ Gérer Villes</button></Link>
-
-        {/* Quartiers */}
-        <Link to="/ajouter-quartier"><button>➕ Ajouter Quartier</button></Link>
-        <Link to="/mise-a-jour-quartier"><button>🛠️ Gérer Quartiers</button></Link>
-
-        {/* Biens */}
-        <Link to="/ajouter-bien"><button>➕ Ajouter Bien</button></Link>
-        <Link to="/mise-a-jour-bien"><button>🛠️ Gérer Biens</button></Link>
-
-        {/* Contrats */}
-        <Link to="/ajouter-contrat"><button>➕ Ajouter Contrat</button></Link>
-        <Link to="/mise-a-jour-contrat"><button>🛠️ Gérer Contrats</button></Link>
-
-        {/* Services */}
-        <Link to="/test-web-service"><button>🧪 Test Web Service</button></Link>
-        <Link to="/statistiques"><button>📊 Statistiques</button></Link>
+    <div className="accueil">
+      <div className="accueil-header">
+        <h2> Bienvenue, {syndic.nom}</h2>
+        <p className="accueil-description">Choisissez une action :</p>
       </div>
 
-      <br /><br />
-      <button onClick={handleLogout} style={{ backgroundColor: "crimson", color: "white" }}>
-        🚪 Se déconnecter
-      </button>
+      <div className="accueil-grid">
+        {actions.map((action) => (
+          <div key={action.id} className="action-card">
+            <div className="action-card-image">
+              <img src={action.image} alt={action.title} />
+            </div>
+            <div className="action-card-title">{action.title}</div>
+            <div className="action-card-description">{action.description}</div>
+            <div className="action-card-buttons">
+              <Link to={action.add} className="btn-add">
+                Ajouter
+              </Link>
+              <Link to={action.manage} className="btn-manage">
+                Gérer
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="logout-section">
+        <button className="btn-logout" onClick={handleLogout}>
+          Se déconnecter
+        </button>
+      </div>
     </div>
   );
 }

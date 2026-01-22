@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { villes } from "../data/data"; // بيانات أولية
+import { villes } from "../data/data"; 
 
 const villeSlice = createSlice({
   name: "ville",
-  initialState: [...villes], // المدن الأولية
+  initialState: [...villes], 
   reducers: {
     ajouterVille: (state, action) => {
       state.push(action.payload);

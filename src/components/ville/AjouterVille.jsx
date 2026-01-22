@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ajouterVille } from "../../redux/villeSlice";
 import { useNavigate } from "react-router-dom";
+import "../../styles/Form.css";
 
 function AjouterVille() {
    const [code, setCode] = useState("");
@@ -15,7 +16,7 @@ function AjouterVille() {
    const handleSubmit = (e) => {
       e.preventDefault();
 
-      // تحقق من عدم تكرار الكود
+      
       const existe = villes.find((v) => v.code === parseInt(code));
       if (existe) {
          alert("Code de ville déjà utilisé !");
@@ -41,47 +42,72 @@ function AjouterVille() {
    };
 
    return (
-      <div
-         style={{ maxWidth: "500px", margin: "50px auto", textAlign: "center" }}
-      >
-         <h2>Ajouter une ville</h2>
-         <form onSubmit={handleSubmit}>
-            <div>
-               <input
-                  type="number"
-                  placeholder="Code de la ville"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                  required
-               />
+      <div className="form-container">
+         <div className="form-wrapper">
+            <div className="form-card">
+               <div className="form-header">
+                  <h2>Ajouter une Ville</h2>
+                  <p>Créez une nouvelle ville dans le système</p>
+               </div>
+               <div className="form-body">
+                  <form onSubmit={handleSubmit}>
+                     <div className="form-group">
+                        <label className="form-label">Code de la ville</label>
+                        <input
+                           type="number"
+                           className="form-input"
+                           placeholder="Ex: 101"
+                           value={code}
+                           onChange={(e) => setCode(e.target.value)}
+                           required
+                        />
+                     </div>
+
+                     <div className="form-group">
+                        <label className="form-label">Nom de la ville</label>
+                        <input
+                           type="text"
+                           className="form-input"
+                           placeholder="Ex: Berkane"
+                           value={nom}
+                           onChange={(e) => setNom(e.target.value)}
+                           required
+                        />
+                     </div>
+
+                     <div className="form-group">
+                        <label className="form-label">Région</label>
+                        <select
+                           className="form-select"
+                           value={region}
+                           onChange={(e) => setRegion(e.target.value)}
+                           required
+                        >
+                           <option value="">-- Sélectionner une région --</option>
+                           {regions.map((r) => (
+                              <option key={r.id} value={r.id}>
+                                 {r.nom}
+                              </option>
+                           ))}
+                        </select>
+                     </div>
+
+                     <div className="form-actions">
+                        <button type="submit" className="form-btn btn-submit">
+                            Enregistrer
+                        </button>
+                        <button
+                           type="button"
+                           className="form-btn btn-cancel"
+                           onClick={() => navigate("/")}
+                        >
+                            Annuler
+                        </button>
+                     </div>
+                  </form>
+               </div>
             </div>
-            <div style={{ marginTop: "10px" }}>
-               <input
-                  type="text"
-                  placeholder="Nom de la ville"
-                  value={nom}
-                  onChange={(e) => setNom(e.target.value)}
-                  required
-               />
-            </div>
-            <div style={{ marginTop: "10px" }}>
-               <select
-                  value={region}
-                  onChange={(e) => setRegion(e.target.value)}
-                  required
-               >
-                  <option value="">-- Sélectionner une région --</option>
-                  {regions.map((r) => (
-                     <option key={r.id} value={r.id}>
-                        {r.nom}
-                     </option>
-                  ))}
-               </select>
-            </div>
-            <button type="submit" style={{ marginTop: "20px" }}>
-               Enregistrer
-            </button>
-         </form>
+         </div>
       </div>
    );
 }
